@@ -1,0 +1,7 @@
+@import './mixin';
+
+$vm-base: 1920;
+@function vw($px) {
+    @return calc(($px / $vm-base) * 100vw);
+    // @return $px * 1px
+}

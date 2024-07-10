@@ -1,0 +1,48 @@
+@import './reset';
+@import './iconfont';
+
+:root {
+	--sky-primary: #409eff;
+	--sky-primary2: #2a2a3a;
+	--sky-primary3: rgba(29,29,38,.7);
+	--sky-error: #F22409;
+	--sky-title: #2a2a3a;
+	--sky-sub-title: #6b6b6b;
+	--sky-desc: #9b9b9b;
+	--sky-bg: #F7F9FA;
+	--sky-border: rgba(239, 239, 245, 1);
+	--sky-border-2: #eee;
+	--sky-primary-color: var(--sky-primary);
+	--sky-error-color: var(--sky-error);
+	--sky-title-color: var(--sky-title);
+	--sky-sub-title-color: var(--sky-sub-title);
+	--sky-desc-color: var(--sky-desc);
+	--sky-bg-color: var(--sky-bg);
+	--sky-border-color: var(--sky-border);
+	--sky-border-2-color: var(--sky-border-2);
+}
+
+::selection {
+    background: var(--sky-primary);
+    color: #fff;
+}
+
+
+.scrollbar {
+	margin: 0 !important;
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 10px;
+	}
+	&::-webkit-scrollbar-track {
+		background: #f3f3f3;
+		border-radius: 10px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #d8d8d8;
+		border-radius: 10px;
+	}
+	&::-webkit-scrollbar-thumb:hover {
+		background: #bfbfbf;
+	}
+}
