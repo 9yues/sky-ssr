@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "animejs": "^3.2.1",
+    "echarts": "^5.5.1",
     "mitt": "^3.0.0",
     "node-fetch-native": "^1.0.2",
     "swiper": "^9.0.5"

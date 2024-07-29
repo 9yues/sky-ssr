@@ -11,7 +11,7 @@ useHead({
   ],
   script: [
     {
-      src: '//api.map.baidu.com/api?type=webgl&v=1.0&ak=jmygafMc3uqI38PzGYBGADf7',
+      // src: '//api.map.baidu.com/api?type=webgl&v=1.0&ak=jmygafMc3uqI38PzGYBGADf7',
     },
   ],
 })
@@ -27,11 +27,8 @@ useHead({
 
 <style setup>
 html, body , #__nuxt{
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  transform: translateX();
-  font: 14px/1.5 "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Roboto, Arial, sans-serif;
+  min-height: 100vh;
+
 }
 
 html.dark {

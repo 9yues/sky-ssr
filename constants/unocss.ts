@@ -6,5 +6,5 @@ export const SHORTCUTS = [
 ]
 
 export const THEME = {
-  PRIMARY: '#409eff',
+  PRIMARY: '#4B78FF',
 }

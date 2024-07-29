@@ -2,7 +2,9 @@
 @import './iconfont';
 
 :root {
-	--sky-primary: #409eff;
+	--el-color-primary: #4B78FF !important;
+
+	--sky-primary: #4B78FF;
 	--sky-primary2: #2a2a3a;
 	--sky-primary3: rgba(29,29,38,.7);
 	--sky-error: #F22409;
@@ -27,6 +29,44 @@
     color: #fff;
 }
 
+.row {
+	width: 1366px;
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+html,body {
+	color: #212529;
+	background: #f9fafe;
+}
+
+body {
+	margin: 0 !important;
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 10px;
+	}
+	&::-webkit-scrollbar-track {
+		background: #f3f3f3;
+		border-radius: 10px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background: #d8d8d8;
+		border-radius: 10px;
+	}
+	&::-webkit-scrollbar-thumb:hover {
+		background: #bfbfbf;
+	}
+}
+
+// .el-menu {
+// 	background-color: rgba(255,255,255,.5) !important;
+// 	backdrop-filter: blur(10px)
+// }
+// .el-menu--horizontal .el-menu .el-menu-item  {
+// 	background-color: rgba(255,255,255,.5) !important;
+// 	backdrop-filter: blur(10px)
+// }
 
 .scrollbar {
 	margin: 0 !important;
@@ -46,3 +86,21 @@
 		background: #bfbfbf;
 	}
 }
+
+.el-carousel {
+	
+	&__button {
+		width: 18px !important;
+		height: 18px !important;
+		opacity: 1 !important;
+		border-radius: 50%;
+		background-color: #e4e5ea !important;
+	}
+	.is-active {
+		.el-carousel__button {
+			background-color: #c4d3fe !important;
+		}
+		
+	}
+}
+
