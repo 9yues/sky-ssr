@@ -12,8 +12,8 @@ interface HeaderItem extends HeaderItemType {
 // const router = useRouter()
 
 export default () => {
-  const route = useRoute()
-  const router = useRouter()
+  const route = process.client ? useRoute() : {}
+  const router = process.client ? useRouter() : {}
   const { $emit } = useMitt()
   const headerList: HeaderItem[] = [
     {

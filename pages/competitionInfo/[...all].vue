@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import { RichText } from '~~/.nuxt/components';
-const route = useRouter()
-const router = useRouter()
+const route = process.client ? useRoute() : {}
+const router = process.client ? useRouter() : {}
 
 const bannerList = ref(['https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg', 'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg'])
 </script>

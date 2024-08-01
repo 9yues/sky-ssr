@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-const route = useRoute()
-const router = useRouter()
+const route = process.client ? useRoute() : {}
+const router = process.client ? useRouter() : {}
 const { $on, MITT_KEY } = useMitt()
 const { headerList } = useHeader()
 
@@ -34,7 +34,7 @@ onMounted(() => {
 })
 
 const handleGo = (index: number) => {
-  router.push(`/specialist/${index + 1}`)
+  router?.push(`/specialist/${index + 1}`)
 }
 </script>
 
@@ -53,7 +53,7 @@ const handleGo = (index: number) => {
             <el-collapse v-model="active">
               <el-collapse-item title="团队专家" name="specialist">
                 <ul>
-                  <li v-for="(item, index) in sidebarList" :key="item.href" :class="{ on: index + 1 === +route.params.specialist }" @click="handleGo(index)">
+                  <li v-for="(item, index) in sidebarList" :key="item.href" :class="{ on: index + 1 === +route?.params?.specialist }" @click="handleGo(index)">
                     {{ item.title }}
                   </li>
                 </ul>

@@ -9,8 +9,8 @@ import pic07 from '@/assets/images/works/pic-07.png'
 import pic08 from '@/assets/images/works/pic-08.png'
 import pic09 from '@/assets/images/works/pic-09.png'
 
-const route = useRoute()
-const router = useRouter()
+const route = process.client ? useRoute() : {}
+const router = process.client ? useRouter() : {}
 const { $on, MITT_KEY } = useMitt()
 const { headerList } = useHeader()
 
@@ -63,7 +63,7 @@ onMounted(() => {
 })
 
 const handleGo = (index: number) => {
-  router.push(`/works/${index + 1}`)
+  router?.push(`/works/${index + 1}`)
 }
 </script>
 
@@ -82,7 +82,7 @@ const handleGo = (index: number) => {
             <el-collapse v-model="active">
               <el-collapse-item title="精彩展示" name="works">
                 <ul>
-                  <li v-for="(item, index) in sidebarList" :key="item.href" :class="{ on: index + 1 === +route.params.works }" @click="handleGo(index)">
+                  <li v-for="(item, index) in sidebarList" :key="item.href" :class="{ on: index + 1 === +route?.params?.works }" @click="handleGo(index)">
                     {{ item.title }}
                   </li>
                 </ul>

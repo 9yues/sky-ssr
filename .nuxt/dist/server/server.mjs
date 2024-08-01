@@ -1254,7 +1254,7 @@ const _routes = [
     meta: __nuxt_page_meta$5,
     alias: (__nuxt_page_meta$5 == null ? void 0 : __nuxt_page_meta$5.alias) || [],
     redirect: (__nuxt_page_meta$5 == null ? void 0 : __nuxt_page_meta$5.redirect) || void 0,
-    component: () => import("./_nuxt/_...all_-ecc426c1.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/_...all_-5cfa670c.js").then((m) => m.default || m)
   },
   {
     name: (__nuxt_page_meta$4 == null ? void 0 : __nuxt_page_meta$4.name) ?? "competitionInfo-all",
@@ -1263,7 +1263,7 @@ const _routes = [
     meta: __nuxt_page_meta$4,
     alias: (__nuxt_page_meta$4 == null ? void 0 : __nuxt_page_meta$4.alias) || [],
     redirect: (__nuxt_page_meta$4 == null ? void 0 : __nuxt_page_meta$4.redirect) || void 0,
-    component: () => import("./_nuxt/_...all_-d42be7c8.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/_...all_-28231166.js").then((m) => m.default || m)
   },
   {
     name: (__nuxt_page_meta$3 == null ? void 0 : __nuxt_page_meta$3.name) ?? "index",
@@ -1272,7 +1272,7 @@ const _routes = [
     meta: __nuxt_page_meta$3,
     alias: (__nuxt_page_meta$3 == null ? void 0 : __nuxt_page_meta$3.alias) || [],
     redirect: (__nuxt_page_meta$3 == null ? void 0 : __nuxt_page_meta$3.redirect) || void 0,
-    component: () => import("./_nuxt/index-db9248d7.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/index-96f5dc74.js").then((m) => m.default || m)
   },
   {
     name: (__nuxt_page_meta$2 == null ? void 0 : __nuxt_page_meta$2.name) ?? "specialist-specialist",
@@ -1281,7 +1281,7 @@ const _routes = [
     meta: __nuxt_page_meta$2,
     alias: (__nuxt_page_meta$2 == null ? void 0 : __nuxt_page_meta$2.alias) || [],
     redirect: (__nuxt_page_meta$2 == null ? void 0 : __nuxt_page_meta$2.redirect) || void 0,
-    component: () => import("./_nuxt/_specialist_-9aff3697.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/_specialist_-2dbc9e5e.js").then((m) => m.default || m)
   },
   {
     name: (__nuxt_page_meta$1 == null ? void 0 : __nuxt_page_meta$1.name) ?? "test",
@@ -1299,7 +1299,7 @@ const _routes = [
     meta: __nuxt_page_meta,
     alias: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.alias) || [],
     redirect: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.redirect) || void 0,
-    component: () => import("./_nuxt/_works_-5f8534ee.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/_works_-7eb6e3b1.js").then((m) => m.default || m)
   }
 ];
 const routerOptions0 = {
@@ -1571,7 +1571,7 @@ const _wrapIf = (component, props, slots) => {
   return { default: () => props ? h(component, props === true ? {} : props, slots) : h(Fragment, {}, slots) };
 };
 const layouts = {
-  default: () => import("./_nuxt/default-081348fc.js").then((m) => m.default || m),
+  default: () => import("./_nuxt/default-6c7f4ebb.js").then((m) => m.default || m),
   home: () => import("./_nuxt/home-b8fb6a39.js").then((m) => m.default || m)
 };
 const LayoutLoader = defineComponent({
@@ -1783,7 +1783,7 @@ const _sfc_main = {
   __name: "nuxt-root",
   __ssrInlineRender: true,
   setup(__props) {
-    const ErrorComponent = defineAsyncComponent(() => import("./_nuxt/error-component-b1b04254.js").then((r) => r.default || r));
+    const ErrorComponent = defineAsyncComponent(() => import("./_nuxt/error-component-a4d5d805.js").then((r) => r.default || r));
     const IslandRendererer = defineAsyncComponent(() => import("./_nuxt/island-renderer-b32f59d0.js").then((r) => r.default || r));
     const nuxtApp = useNuxtApp();
     nuxtApp.deferHydration();
@@ -1844,10 +1844,8 @@ const plugins = normalizePlugins(_plugins);
 const entry$1 = (ctx) => entry(ctx);
 export {
   __nuxt_component_0$1 as _,
-  useRouter as a,
-  useHead as b,
   createError as c,
   entry$1 as default,
-  useRoute as u
+  useHead as u
 };
 //# sourceMappingURL=server.mjs.map

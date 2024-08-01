@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const route = useRoute()
-const router = useRouter()
+const route = process.client ? useRoute() : {}
+const router = process.client ? useRouter() : {}
 </script>
 
 <template>
@@ -8,9 +8,9 @@ const router = useRouter()
     <div text-4xl>
       <div i-carbon-warning inline-block />
     </div>
-    <div>Not found</div>
+    <div>404 Not found</div>
     <div>
-      <button btn text-sm m="3 t8" @click="router.back()">
+      <button btn text-sm m="3 t8" @click="router?.back()">
         Back
       </button>
     </div>
