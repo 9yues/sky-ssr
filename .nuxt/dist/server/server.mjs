@@ -1272,7 +1272,7 @@ const _routes = [
     meta: __nuxt_page_meta$3,
     alias: (__nuxt_page_meta$3 == null ? void 0 : __nuxt_page_meta$3.alias) || [],
     redirect: (__nuxt_page_meta$3 == null ? void 0 : __nuxt_page_meta$3.redirect) || void 0,
-    component: () => import("./_nuxt/index-9a295101.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/index-db9248d7.js").then((m) => m.default || m)
   },
   {
     name: (__nuxt_page_meta$2 == null ? void 0 : __nuxt_page_meta$2.name) ?? "specialist-specialist",
@@ -1281,7 +1281,7 @@ const _routes = [
     meta: __nuxt_page_meta$2,
     alias: (__nuxt_page_meta$2 == null ? void 0 : __nuxt_page_meta$2.alias) || [],
     redirect: (__nuxt_page_meta$2 == null ? void 0 : __nuxt_page_meta$2.redirect) || void 0,
-    component: () => import("./_nuxt/_specialist_-61632216.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/_specialist_-9aff3697.js").then((m) => m.default || m)
   },
   {
     name: (__nuxt_page_meta$1 == null ? void 0 : __nuxt_page_meta$1.name) ?? "test",
@@ -1299,7 +1299,7 @@ const _routes = [
     meta: __nuxt_page_meta,
     alias: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.alias) || [],
     redirect: (__nuxt_page_meta == null ? void 0 : __nuxt_page_meta.redirect) || void 0,
-    component: () => import("./_nuxt/_works_-31881594.js").then((m) => m.default || m)
+    component: () => import("./_nuxt/_works_-5f8534ee.js").then((m) => m.default || m)
   }
 ];
 const routerOptions0 = {
@@ -1571,7 +1571,7 @@ const _wrapIf = (component, props, slots) => {
   return { default: () => props ? h(component, props === true ? {} : props, slots) : h(Fragment, {}, slots) };
 };
 const layouts = {
-  default: () => import("./_nuxt/default-73141230.js").then((m) => m.default || m),
+  default: () => import("./_nuxt/default-081348fc.js").then((m) => m.default || m),
   home: () => import("./_nuxt/home-b8fb6a39.js").then((m) => m.default || m)
 };
 const LayoutLoader = defineComponent({
