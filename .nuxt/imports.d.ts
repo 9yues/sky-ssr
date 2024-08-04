@@ -11,7 +11,7 @@ export { default as useCss } from '../composables/useCss';
 export { default as useHeader } from '../composables/useHeader';
 export { default as useMitt } from '../composables/useMitt';
 export { useUserStore } from '../composables/user';
-export { getFileExtension } from '../utils/index';
+export { getFileExtension, genID } from '../utils/index';
 export { usePinia } from '../node_modules/@pinia/nuxt/dist/runtime/composables';
 export { useColorMode } from '../node_modules/@nuxtjs/color-mode/dist/runtime/composables';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';

@@ -34,24 +34,27 @@ $on(MITT_KEY.HEADER_SELECT_EVENT, (e: any) => {
 
 <template>
   <div class="home">
-    <el-carousel trigger="click" height="740px" :autoplay="false" :interval="1000000">
-      <el-carousel-item v-for="item in bannerList" :key="item" class="relative">
-        <img class="w-100% h-740px object-cover block" :src="item">
-        <div class="absolute top-50% left-50% translate-x--50% translate-y--90%">
-          <div class="row">
-            <div class="text-[40px] font-bold text-[#fff]">
-              童创空天
+    <div class="home-banner">
+      <el-carousel trigger="click" height="740px" :autoplay="false" :interval="1000000">
+        <el-carousel-item v-for="item in bannerList" :key="item" class="relative">
+          <div class="w-100% h-740px home-banner__poster" :style="{ 'background-image': `url(${item})` }" />
+          <!-- <img :src="item" class="w-100% block"> -->
+          <div class="absolute top-50% left-50% translate-x--50% translate-y--90%">
+            <div class="row">
+              <div class="text-[40px] font-bold text-[#fff]">
+                童创空天
+              </div>
+              <div class="text-[40px] font-bold text-[#fff] mt-14px">
+                全国青少年空天科普成果展演活动
+              </div>
+              <el-button color="#fff" round size="large" class="mt-100px w-140px h-48px! border-rd-40px! home-banner__text">
+                了解详情
+              </el-button>
             </div>
-            <div class="text-[40px] font-bold text-[#fff] mt-14px">
-              全国青少年空天科普成果展演活动
-            </div>
-            <el-button color="#fff" round size="large" class="mt-100px w-140px h-48px! border-rd-40px! home-banner__text">
-              了解详情
-            </el-button>
           </div>
-        </div>
-      </el-carousel-item>
-    </el-carousel>
+        </el-carousel-item>
+      </el-carousel>
+    </div>
 
     <!-- 证书查询 -->
     <div class="home-entrance mt-100px">
@@ -209,6 +212,11 @@ $on(MITT_KEY.HEADER_SELECT_EVENT, (e: any) => {
 <style lang="scss" scoped>
 .home {
   &-banner {
+    &__poster{
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
     &__text {
       :deep(span) {
         @apply text-[16px];

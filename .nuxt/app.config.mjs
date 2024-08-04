@@ -1,5 +1,5 @@
 
-import { defuFn } from 'D:/SourceCode/git/sky-ssr/node_modules/defu/dist/defu.mjs'
+import { defuFn } from 'E:/vue3/sky-ssr/node_modules/defu/dist/defu.mjs'
 
 const inlineConfig = {}
 

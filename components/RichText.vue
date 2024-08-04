@@ -10,18 +10,18 @@ const emit = defineEmits<Emits>()
 </script>
 
 <template>
-  <article class="pb-20px row pt-0">
-    <h2 class="text-26px">
-      世界机器人大赛2022总决赛-元宇宙三维编程赛项成功举办
-    </h2>
-    <div class="text-[#9b9b9b] pt-20px pb-20px text-13px flex flex-items-center">
-      <span>发表时间：2023-03-04 12:52:31</span>
-      <span>浏览量：2585</span>
-    </div>
+  <article class="pb-20px pt-0">
     <div class="flex rich-text">
-      <div class="flex-1 rich-text__content">
+      <div class="flex-1 rich-text__content bg-[#fff] p-20px border-rd-10px">
+        <h2 class="text-26px text-center" style="line-height: 40px;">
+          世界机器人大赛2022总决赛
+        </h2>
+        <div class="text-[#9b9b9b] pt-10px pb-20px text-13px flex flex-items-center justify-center">
+          <span class="text-[#959DB6] text-[12px]">发表时间：2023-03-04 12:52:31</span>
+          <span class="text-[#959DB6] text-[12px] ml-30px">浏览量：2585</span>
+        </div>
         <div>
-          <img src="https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg" alt="">
+          <img src="@/assets/images/banner.png" alt="">
           新华社布宜诺斯艾利斯12月2日电 12月1日，国家主席习近平就美国前总统乔治·布什逝世向美国总统特朗普致唁电。习近平代表中国政府和中国人民，并以个人的名义，对乔治·布什前总统逝世表示深切的哀悼，向其家庭全体成员表示诚挚的慰问。
 
           习近平在唁电中表示，乔治·布什前总统是中国人民的老朋友，40多年来见证并推动中美关系取得历史性发展，为两国人民友好事业作出了积极贡献。中国人民对此不会忘记。
@@ -35,15 +35,15 @@ const emit = defineEmits<Emits>()
           习近平强调，长期以来，在两国领导人和两国人民共同努力下，中美关系不断前行，为两国人民和各国人民都带来了福祉。我高度重视中美关系，愿同总统先生一道，努力推动两国关系沿着正确轨道继续向前发展。
         </div>
       </div>
-      <div class="w-300px ml-40px rich-text__file">
+      <div class="w-300px ml-20px rich-text__file">
         <el-card style="max-width: 480px">
           <template #header>
             <div class="card-header">
-              <span>附件下载</span>
+              <span class="text-[#959DB6] text-[14px]">附件下载：</span>
             </div>
           </template>
 
-          <div v-for="o in 4" :key="o">
+          <div v-for="o in 4" :key="o" class="mt-12px rich-text__file-item">
             <el-link type="primary">
               {{ `List item ${o}` }}
             </el-link>
@@ -63,10 +63,20 @@ const emit = defineEmits<Emits>()
         }
         img {
             // width: auto;
+            @apply border-rd-10px;
             width: 100%;
             max-width: 100%;
         }
     }
-    &__file {}
+    &__file {
+      :deep(.el-card) {
+        border-radius: 10px;
+      }
+      &-item {
+        &:first-child {
+          @apply mt-0;
+        }
+      }
+    }
 }
 </style>

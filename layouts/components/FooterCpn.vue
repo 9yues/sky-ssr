@@ -1,13 +1,20 @@
 <script lang="ts" setup>
+import HomeFooterBg from '@/assets/images/footer_bg.png'
+import OtherFooterBg from '@/assets/images/footer_bg2.png'
+const route = process.client ? useRoute() : {}
+const router = process.client ? useRouter() : {}
+
+const isHome = computed(() => route?.fullPath === '/')
+const footerBg = computed(() => isHome.value ? HomeFooterBg : OtherFooterBg)
 const handleGo = () => {
   window.open('https://beian.miit.gov.cn/')
 }
 </script>
 
 <template>
-  <footer class="sky-footer">
+  <footer class="sky-footer" :class="{ home: isHome }" :style="{ 'background-image': `url(${footerBg})` }">
     <div class="row">
-      <div class="flex pt-200px ">
+      <div class="flex sky-footer__flex">
         <div class="w-300px">
           <div class="mb-40px">
             <el-link :underline="false" class="text-[20px]! text-[#fff]">
@@ -74,14 +81,22 @@ const handleGo = () => {
 <style lang="scss" scoped>
 .sky-footer {
   @apply h-400px;
-  background-color: #E8F1FF;
-    background-image: url(@/assets/images/footer_bg.png);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    color: #fff;
-    :deep(.el-link) {
-      @apply text-[#fff];
+  &.home {
+    background-color: #E8F1FF;
+    .sky-footer__flex {
+      @apply pt-200px;
     }
+  }
+  &__flex {
+    @apply pt-140px;
+  }
+  background-image: url(@/assets/images/footer_bg.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: #fff;
+  :deep(.el-link) {
+    @apply text-[#fff];
+  }
 
 }
 </style>

@@ -1,10 +1,21 @@
 <script setup lang="ts">
+const route = process.client ? useRoute() : {}
+const router = process.client ? useRouter() : {}
 const { $emit, MITT_KEY } = useMitt()
 const { headerList, activeIndex } = useHeader()
 
 const handleSelect = (key: string) => {
+  console.log('key', key)
   // currentIndex.value = key
   $emit(MITT_KEY.HEADER_SELECT_EVENT, key)
+}
+
+const handleGo = (item: any) => {
+  console.log('item', item)
+  if (item.title === '新闻中心')
+    router.push(item.href)
+
+  // currentIndex.value = key
 }
 </script>
 
@@ -16,6 +27,7 @@ const handleSelect = (key: string) => {
           <el-menu
             class="w-100%"
             :default-active="activeIndex" mode="horizontal"
+            :ellipsis="false"
             router
             @select="handleSelect"
           >
@@ -28,18 +40,18 @@ const handleSelect = (key: string) => {
             </el-menu-item>
             <el-menu-item class="flex-1" />
             <template
-              v-for="item in headerList"
-              :key="item.href"
+              v-for="(item, index) in headerList"
+              :key="`${item.href}_${index}`"
             >
               <el-sub-menu v-if="item.children?.length" :index="item.href">
                 <template #title>
-                  {{ item.title }}
+                  <span @click="handleGo(item)">{{ item.title }}</span>
                 </template>
-                <el-menu-item v-for="child in item.children" :key="child.href" :index="child.href">
+                <el-menu-item v-for="(child, childIndex) in item.children" :key="`${child.href}_${childIndex}`" :index="child.href" @click="handleGo(child)">
                   {{ child.title }}
                 </el-menu-item>
               </el-sub-menu>
-              <el-menu-item v-else :index="item.href">
+              <el-menu-item v-else :index="item.href" @click="handleGo(item)">
                 {{ item.title }}
               </el-menu-item>
             </template>

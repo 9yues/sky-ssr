@@ -333,6 +333,7 @@ declare global {
   const effect: typeof import('vue')['effect']
   const effectScope: typeof import('vue')['effectScope']
   const extendRef: typeof import('@vueuse/core')['extendRef']
+  const genID: typeof import('../../utils/index')['genID']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
   const getFileExtension: typeof import('../../utils/index')['getFileExtension']
@@ -960,6 +961,7 @@ declare module 'vue' {
     readonly effect: UnwrapRef<typeof import('vue')['effect']>
     readonly effectScope: UnwrapRef<typeof import('vue')['effectScope']>
     readonly extendRef: UnwrapRef<typeof import('@vueuse/core')['extendRef']>
+    readonly genID: UnwrapRef<typeof import('../../utils/index')['genID']>
     readonly getCurrentInstance: UnwrapRef<typeof import('vue')['getCurrentInstance']>
     readonly getCurrentScope: UnwrapRef<typeof import('vue')['getCurrentScope']>
     readonly getFileExtension: UnwrapRef<typeof import('../../utils/index')['getFileExtension']>
