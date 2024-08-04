@@ -1,8 +1,6 @@
 FROM node:19.1.0
 
-COPY ./public /data/public
-COPY ./server /data/server
-COPY ./nitro.json /data
+COPY ./dist /data
 
 EXPOSE 3000
 
