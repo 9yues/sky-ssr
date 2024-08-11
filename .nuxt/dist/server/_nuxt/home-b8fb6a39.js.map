@@ -1,1 +1,0 @@
-{"version":3,"file":"home-b8fb6a39.js","sources":["../../../../layouts/home.vue"],"sourcesContent":["<template>\r\n  <main class=\"py-20 px-10 text-center\">\r\n    <slot />\r\n  </main>\r\n</template>\r\n"],"names":[],"mappings":";;;;AACQ,SAAA,eAAA,MAAA,OAAA,SAAA,QAA+B;;;;;;;;;;;;"}

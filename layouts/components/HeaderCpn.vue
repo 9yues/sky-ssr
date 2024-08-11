@@ -57,12 +57,17 @@ const handleGo = (item: any) => {
             </template>
           </el-menu>
         </client-only>
-        <div class="absolute right--120px top-50% translate-y--50% flex flex-items-center">
-          <el-button type="primary" round>
+        <div class="absolute right--140px top-50% translate-y--50% flex flex-items-center">
+          <!-- <el-button type="primary" round>
             <span>注册</span>
             <span class="ml-2 mr-2 opacity-20">|</span>
             <span>登录</span>
-          </el-button>
+          </el-button> -->
+          <div class="flex items-center justify-center login-btn">
+            <a href="/register">注册</a>
+            <span>|</span>
+            <a href="/login">登录</a>
+          </div>
         </div>
       </nav>
     </div>
@@ -78,6 +83,19 @@ const handleGo = (item: any) => {
     @apply h-72px;
     &:hover {
       background:none;
+    }
+  }
+  .login-btn {
+    @apply bg-[var(--sky-primary)] border-rd-20px pt-12px pb-12px pl-20px pr-20px;
+
+    a, span{
+      @apply text-[#fff] text-[14px];
+    }
+    span {
+      @apply ml-12px mr-12px opacity-50;
+    }
+    a {
+      @apply hover:opacity-70
     }
   }
 }
