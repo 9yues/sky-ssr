@@ -60,32 +60,6 @@ console.log('新闻', newList)
 
 
 
-// const { data: classifyList } = await useAsyncData('getNewsClassifyApi', () => getNewsClassifyApi, { server: false })
-// console.log('分类', classifyList)
-
-// const classifyIds1 = computed(() => classifyList.value?.result?.find(v => v.name === '赛事公告')?.children?.map(v => v.id))
-// const classifyIds2 = computed(() => classifyList.value?.result?.find(v => v.name === '赛事动态')?.children?.map(v => v.id))
-// console.log('赛事公告', classifyIds1)
-// console.log('赛事动态,',classifyIds2)
-
-// const classifyIdsAll = computed(() => [...classifyIds1.value,...classifyIds2.value ])
-// const getNewsApis: any[] = []
-// console.log('classifyIdsAll', classifyIdsAll)
-// for (let i = 0; i < classifyIdsAll.value?.length; i++) {
-//   getNewsApis.push($fetch(`${config.baseURL}open/news`, {
-//     params: {
-//       classifyId: classifyIdsAll.value[i],
-//       page: 1,
-//       size: 10
-//     }
-//   }))
-// }
-
-// const { data: newList } = await useAsyncData('getNewsApi', async () => await Promise.all(getNewsApis), { server: false })
-// console.log('新闻', newList)
-
-
-
 
 const handleTabChange = (tab: number) => {
   newTab.value = tab
