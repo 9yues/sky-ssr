@@ -25,6 +25,14 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
   nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://121.196.208.253:8081/', // 这里是接口地址
+        changeOrigin: true,
+        prependPath: true,
+        rewrite: (path: string) => path.replace('/api', ''),
+      },
+    },
     output: {
       publicDir: '../docker/dist/public',
       serverDir: '../docker/dist/server',

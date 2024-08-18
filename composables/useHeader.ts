@@ -4,6 +4,8 @@ interface HeaderItemType {
   title?: string
   children?: HeaderItemType[]
 }
+import { useAppStore } from '@/stores/index'
+
 // interface HeaderItem extends HeaderItemType {
 //   href?: string
 //   title?: string
@@ -16,6 +18,55 @@ interface HeaderItemType {
 export default () => {
   const route = process.client ? useRoute() : {}
   const router = process.client ? useRouter() : {}
+  const appStore = useAppStore()
+  const specialistClassifyList = computed(() => appStore.specialistClassifyList)
+  const newsClassifyList = computed(() => appStore.newsClassifyList)
+  const matchClassifyList = computed(() => appStore.matchClassifyList)
+
+
+
+  // 获取专家分类
+  // const specialistClassifyApi = $fetch('/api/open/specialist/classify')
+  // // 获取新闻分类
+  // const newsClassifyApi = $fetch('/api/open/news/classify')
+  // // 获取项目分类
+  // const matchClassifyApi = $fetch('/api/open/match/classify')
+
+  if (process.client) {
+    if (!specialistClassifyList.value.length) {
+      $fetch('/api/open/specialist/classify').then(res => {
+        console.log('获取专家分类', res)
+        appStore.setSpecialistClassifyList(res.result)
+      })
+    }
+
+    if (!newsClassifyList.value.length) {
+      $fetch('/api/open/news/classify').then(res => {
+        console.log('获取新闻分类', res)
+        appStore.setNewsClassifyList(res.result)
+      })
+    }
+
+    if (!matchClassifyList.value.length) {
+      $fetch('/api/open/match/classify').then(res => {
+        console.log('获取项目分类', res)
+        appStore.setMatchClassifyList(res.result)
+      })
+    }
+   
+  }
+
+ 
+
+  
+//  Promise.all([specialistClassifyApi, newsClassifyApi, matchClassifyApi]).then(() => {
+//     console.log('specialistClassifyApi', specialistClassifyApi)
+//     console.log('newsClassifyApi', newsClassifyApi)
+//     console.log('matchClassifyApi', matchClassifyApi)
+//   })  
+
+
+  
   const { $emit } = useMitt()
   const headerList = computed(() => {
     const data: HeaderItemType[] = [
@@ -26,110 +77,43 @@ export default () => {
       {
         href: '/introduce',
         title: '赛项介绍',
-        children: [
-          {
-            id: '1',
-            href: '/introduce/1',
-            title: '积木构建',
-            children: [
-              {
-                id: '123',
-                href: '/introduce/1?id=123',
-                title: '积木构建1',
-              },
-              {
-                id: '456',
-                href: '/introduce/1?id=456',
-                title: '积木构建2',
-              },
-            ],
-          },
-          {
-            id: '2',
-            href: '/introduce/2',
-            title: '竞技飞翔',
-            children: [
-              {
-                id: '123',
-                href: '/introduce/2?id=123',
-                title: '竞技飞翔1',
-              },
-              {
-                id: '456',
-                href: '/introduce/2?id=456',
-                title: '竞技飞翔2',
-              },
-            ],
-          },
-          {
-            id: '3',
-            href: '/introduce/3',
-            title: '竞技飞翔3',
-          },
-          {
-            id: '4',
-            href: '/introduce/4',
-            title: '竞技飞翔4',
-          },
-          {
-            id: '5',
-            href: '/introduce/5',
-            title: '竞技飞翔5',
-          },
-          {
-            id: '6',
-            href: '/introduce/6',
-            title: '竞技飞翔6',
-          },
-        ],
+        children: matchClassifyList.value?.map(v => ({ title: v.label, id: v.value, href: `/introduce/${v.value}` })),
       },
       {
         href: '/specialist',
         title: '专家团队',
-        children: [
-          {
-            href: '/specialist/1',
-            title: '行业专家',
-          },
-          {
-            href: '/specialist/2',
-            title: '航空专家',
-          },
-          {
-            href: '/specialist/3',
-            title: '航天专家',
-          },
-        ],
+        children: specialistClassifyList.value?.map(v => ({ title: v.label, id: v.value, href: `/specialist/${v.value}` })),
       },
-      {
-        href: '/works',
-        title: '精彩展示',
-        children: [
-          {
-            href: '/works/1',
-            title: '优秀作品',
-          },
-          {
-            href: '/works/2',
-            title: '优秀组织单位',
-          },
-        ],
-      },
+      // {
+      //   href: '/works',
+      //   title: '精彩展示',
+      //   children: [
+      //     {
+      //       href: '/works/1',
+      //       title: '优秀作品',
+      //     },
+      //     {
+      //       href: '/works/2',
+      //       title: '优秀组织单位',
+      //     },
+      //   ],
+      // },
       {
         href: '/news',
         title: '新闻中心',
-        children: [
-          {
-            id: '1',
-            href: '/newList/1',
-            title: '赛事公告',
-          },
-          {
-            id: '2',
-            href: '/newList/2',
-            title: '赛事动态',
-          },
-        ],
+        children: newsClassifyList.value?.map(v => ({ title: v.label, id: v.value, href: `/newsList/${v.value}` })).concat([{ href:'/works', title: '精彩展示' }])
+        // children: [
+        //   {
+        //     id: '1',
+        //     href: '/newList/1',
+        //     title: '赛事公告',
+        //   },
+        //   {
+        //     id: '2',
+        //     href: '/newList/2',
+        //     title: '赛事动态',
+        //   },
+        // ],
       },
 
       {

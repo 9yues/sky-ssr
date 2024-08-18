@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+
+
+
 const route = process.client ? useRoute() : {}
 const router = process.client ? useRouter() : {}
 const { $on, MITT_KEY } = useMitt()

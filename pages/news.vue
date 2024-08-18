@@ -1,6 +1,12 @@
 <script lang="ts" setup>
+import { useAppStore } from '@/stores/index'
+const config = useConfig()
 const route = process.client ? useRoute() : {}
 const router = process.client ? useRouter() : {}
+const serverRoute = useRoute()
+const appStore = useAppStore()
+const { headerList } = useHeader()
+
 
 const newTab = ref(0)
 const list = ref([
@@ -26,6 +32,61 @@ const list = ref([
   },
 ])
 
+
+const res = await $fetch(`${config.baseURL}open/news/classify`)
+console.log('分类', res)
+
+console.log(res, 'res')
+const classifyIds1 = computed(() => res?.result?.find(v => v.name === '赛事公告')?.children?.map(v => v.id))
+const classifyIds2 = computed(() => res?.result?.find(v => v.name === '赛事动态')?.children?.map(v => v.id))
+console.log('赛事公告', classifyIds1)
+console.log('赛事动态,',classifyIds2)
+
+const classifyIdsAll = computed(() => [...classifyIds1.value,...classifyIds2.value ])
+const getNewsApis: any[] = []
+console.log('classifyIdsAll', classifyIdsAll)
+for (let i = 0; i < classifyIdsAll.value?.length; i++) {
+  getNewsApis.push($fetch(`${config.baseURL}open/news`, {
+    params: {
+      classifyId: classifyIdsAll.value[i],
+      page: 1,
+      size: 10
+    }
+  }))
+}
+
+const { data: newList } = await useAsyncData('getNewsApi', async () => await Promise.all(getNewsApis), {transform: (res) => res.map(v => v.result) })
+console.log('新闻', newList)
+
+
+
+// const { data: classifyList } = await useAsyncData('getNewsClassifyApi', () => getNewsClassifyApi, { server: false })
+// console.log('分类', classifyList)
+
+// const classifyIds1 = computed(() => classifyList.value?.result?.find(v => v.name === '赛事公告')?.children?.map(v => v.id))
+// const classifyIds2 = computed(() => classifyList.value?.result?.find(v => v.name === '赛事动态')?.children?.map(v => v.id))
+// console.log('赛事公告', classifyIds1)
+// console.log('赛事动态,',classifyIds2)
+
+// const classifyIdsAll = computed(() => [...classifyIds1.value,...classifyIds2.value ])
+// const getNewsApis: any[] = []
+// console.log('classifyIdsAll', classifyIdsAll)
+// for (let i = 0; i < classifyIdsAll.value?.length; i++) {
+//   getNewsApis.push($fetch(`${config.baseURL}open/news`, {
+//     params: {
+//       classifyId: classifyIdsAll.value[i],
+//       page: 1,
+//       size: 10
+//     }
+//   }))
+// }
+
+// const { data: newList } = await useAsyncData('getNewsApi', async () => await Promise.all(getNewsApis), { server: false })
+// console.log('新闻', newList)
+
+
+
+
 const handleTabChange = (tab: number) => {
   newTab.value = tab
 }
@@ -33,6 +94,7 @@ const handleTabChange = (tab: number) => {
 
 <template>
   <div class="news">
+    <!-- <pre>{{ newList }}</pre> -->
     <el-carousel trigger="click" height="500px">
       <el-carousel-item v-for="item in 4" :key="item">
         <img class="w-100% h-500px object-cover block" src="https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg">
@@ -63,13 +125,23 @@ const handleTabChange = (tab: number) => {
             </div>
             <div class="mt-10px flex-1 news-body__item">
               <el-card>
-                <ul>
-                  <li v-for="o in 4" :key="o" class=" flex items-center">
+                <ul v-if="newTab === 0">
+                  <li v-for="item in newList[0].data" :key="item.id" class=" flex items-center">
                     <div class="flex-1 text-hidden">
-                      2024若尔盖国家2024若尔盖国家2024若尔盖国家2024若尔盖国家2024若尔盖国家2024若尔盖国家
+                      {{ item.title }}
                     </div>
                     <div class="text-[#959DB6]">
-                      2024.07.06
+                      {{ item.createTime }}
+                    </div>
+                  </li>
+                </ul>
+                <ul v-if="newTab === 1">
+                  <li v-for="item in newList[1  ].data" :key="item.id" class=" flex items-center">
+                    <div class="flex-1 text-hidden">
+                      {{ item.title }}
+                    </div>
+                    <div class="text-[#959DB6]">
+                      {{ item.createTime }}
                     </div>
                   </li>
                 </ul>
@@ -86,8 +158,8 @@ const handleTabChange = (tab: number) => {
         <span class="flex items-center">更多 <img class="w-12px ml-10px" src="@/assets/images/icon-arrow.png" alt=""></span>
       </div>
       <el-row :gutter="30">
-        <el-col v-for="(item, index) in list" :key="index" class="mb-30px" :span="12">
-          <image-text-card direction="horizontal" :exceed-line="6" default-height="210px" :title="item.title" :desc="item.desc" :poster="item.poster" />
+        <el-col v-for="(item, index) in newList[2].data" :key="item.id" class="mb-30px" :span="12">
+          <image-text-card direction="horizontal" :exceed-line="6" default-height="210px" :title="item.title" :desc="item.content" :poster="item.cover" />
         </el-col>
       </el-row>
     </div>
@@ -98,8 +170,8 @@ const handleTabChange = (tab: number) => {
         <span class="flex items-center">更多 <img class="w-12px ml-10px" src="@/assets/images/icon-arrow.png" alt=""></span>
       </div>
       <el-row :gutter="30">
-        <el-col v-for="(item, index) in list" :key="index" class="mb-30px" :span="8">
-          <image-text-card :title="item.title" :desc="item.desc" :poster="item.poster" />
+        <el-col v-for="(item, index) in newList[3].data" :key="item.id" class="mb-30px" :span="8">
+          <image-text-card :title="item.title" :desc="item.content" :poster="item.cover" />
         </el-col>
       </el-row>
     </div>
