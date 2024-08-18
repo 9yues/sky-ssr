@@ -6,15 +6,6 @@ interface HeaderItemType {
 }
 import { useAppStore } from '@/stores/index'
 
-// interface HeaderItem extends HeaderItemType {
-//   href?: string
-//   title?: string
-//   children?: HeaderItemType[]
-// }
-
-// const route = useRoute()
-// const router = useRouter()
-
 export default () => {
     const route = process.client ? useRoute() : {}
     const router = process.client ? useRouter() : {}
