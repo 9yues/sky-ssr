@@ -19,21 +19,21 @@ export default () => {
 
     if (process.client) {
         if (!specialistClassifyList.value.length) {
-            $fetch(`${config.baseURL}/open/specialist/classify`).then((res) => {
+            $fetch(`${config.baseURL}open/specialist/classify`).then((res) => {
                 console.log('获取专家分类', res)
                 appStore.setSpecialistClassifyList(res.result)
             })
         }
 
         if (!newsClassifyList.value.length) {
-            $fetch(`${config.baseURL}/open/news/classify`).then((res) => {
+            $fetch(`${config.baseURL}open/news/classify`).then((res) => {
                 console.log('获取新闻分类', res)
                 appStore.setNewsClassifyList(res.result)
             })
         }
 
         if (!matchClassifyList.value.length) {
-            $fetch(`${config.baseURL}/open/match/classify`).then((res) => {
+            $fetch(`${config.baseURL}open/match/classify`).then((res) => {
                 console.log('获取项目分类', res)
                 appStore.setMatchClassifyList(res.result)
             })
