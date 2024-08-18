@@ -25,12 +25,6 @@ export default () => {
     const newsClassifyList = computed(() => appStore.newsClassifyList)
     const matchClassifyList = computed(() => appStore.matchClassifyList)
     console.log('config', config)
-    // 获取专家分类
-    // const specialistClassifyApi = $fetch('/api/open/specialist/classify')
-    // // 获取新闻分类
-    // const newsClassifyApi = $fetch('/api/open/news/classify')
-    // // 获取项目分类
-    // const matchClassifyApi = $fetch('/api/open/match/classify')
 
     if (process.client) {
         if (!specialistClassifyList.value.length) {
