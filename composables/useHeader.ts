@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 interface HeaderItemType {
     id?: string
     href?: string
@@ -15,9 +17,31 @@ export default () => {
     const specialistClassifyList = computed(() => appStore.specialistClassifyList)
     const newsClassifyList = computed(() => appStore.newsClassifyList)
     const matchClassifyList = computed(() => appStore.matchClassifyList)
+    const workClassifyList = computed(() => appStore.workClassifyList)
+
+    const workId = computed(() => (workClassifyList.value?.length ? workClassifyList.value[0]?.children[0]?.id : ''))
+
+    const workMenu = computed(() => {
+        return workClassifyList.value?.map((v) => {
+            const v2Id = v?.c?.length ? v?.c[0].id : ''
+            const data = {
+                title: v.name,
+                id: v.id,
+                href: `/works?id=${v2Id}`,
+                c: v.c?.map((v) => ({ ...v, title: v.name })),
+            }
+            return data
+        })
+    })
     console.log('config', config)
 
     if (process.client) {
+        if (!workClassifyList.value.length) {
+            $fetch(`${config.baseURL}open/work/classify`).then((res) => {
+                console.log('获取作品分类', res)
+                appStore.setWorkClassifyList(res.result)
+            })
+        }
         if (!specialistClassifyList.value.length) {
             $fetch(`${config.baseURL}open/specialist/classify`).then((res) => {
                 console.log('获取专家分类', res)
@@ -54,13 +78,24 @@ export default () => {
                 title: '首页',
             },
             {
-                href: '/introduce',
+                href: '/introduceHome',
                 title: '赛项介绍',
-                children: matchClassifyList.value?.map((v) => ({
-                    title: v.label,
-                    id: v.value,
-                    href: `/introduce/${v.value}`,
-                })),
+                children: matchClassifyList.value?.map((v) => {
+                    const v2Id = v?.children?.length ? v?.children[0].id : ''
+                    const data = {
+                        title: v.name,
+                        id: v.id,
+                        href: `/introduce/${v.id}?id=${v2Id}&type=parent`,
+                    }
+                    if (v?.children?.length) {
+                        data.children = v?.children?.map((v2) => ({
+                            title: v2.name,
+                            id: v2.id,
+                            href: `/introduce/${v.id}?id=${v2.id}&type=child`,
+                        }))
+                    }
+                    return data
+                }),
             },
             {
                 href: '/specialist',
@@ -89,8 +124,17 @@ export default () => {
                 href: '/news',
                 title: '新闻中心',
                 children: newsClassifyList.value
-                    ?.map((v) => ({ title: v.label, id: v.value, href: `/newsList/${v.value}` }))
-                    .concat([{ href: '/works', title: '精彩展示' }]),
+                    ?.map((v) => {
+                        const v2Id = v?.c?.length ? v?.c[0].id : ''
+                        const data = {
+                            title: v.name,
+                            id: v.id,
+                            href: `/newList/${v.id}?id=${v2Id}&type=parent`,
+                            c: v.c?.map((v) => ({ ...v, title: v.name })),
+                        }
+                        return data
+                    })
+                    .concat(workMenu.value),
                 // children: [
                 //   {
                 //     id: '1',
@@ -106,7 +150,7 @@ export default () => {
             },
 
             {
-                href: '/contact/bj',
+                href: '/contact',
                 title: '联系我们',
             },
         ]
