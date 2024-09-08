@@ -93,7 +93,7 @@ const { data: introduceData } = await useAsyncData('introduceData', () =>
                     </el-col>
                 </el-row>
 
-                <div class="home-entrance__body relative w-1040px ml-auto! mr-auto! mt-100px">
+                <div class="home-entrance__body relative w-1040px ml-auto! mr-auto! mt-100px pb-100px">
                     <img class="w-100% block" src="@/assets/images/home/bg_countdown.png" />
 
                     <div class="absolute top-0 left-0 w-100% h-100%">
@@ -140,26 +140,26 @@ const { data: introduceData } = await useAsyncData('introduceData', () =>
         </div>
 
         <!-- 活动进度 -->
-        <div class="home-progress pt-100px bg-[#f4f6ff]">
-            <img class="w-100%" src="@/assets/images/home/bg_color1.jpg" />
-            <div class="home-progress__body">
+        <div class="home-progress pt-100px bg-[#fff]">
+            <img class="w-100%" src="@/assets/images/home/head_bg_01.png" />
+            <div class="home-progress__body bg-[#f4f6ff]">
                 <div class="row">
                     <div class="flex items-center justify-center">
                         <img class="w-50px" src="@/assets/images/home/4.png" />
                         <b class="text-[50px] ml-16px mr-16px">活动进度</b>
                         <img class="w-50px" src="@/assets/images/home/5.png" />
                     </div>
-                    <div class="mt-80px mb-80px flex items-center justify-center">
+                    <div class="mt-80px flex items-center justify-center">
                         <img class="w-1040px" src="@/assets/images/home/activity_progress.png" />
                     </div>
                 </div>
             </div>
-            <img class="w-100%" src="@/assets/images/home/bg_color2.jpg" />
+            <img class="w-100%" src="@/assets/images/home/head_bg_02.png" />
         </div>
 
         <!-- 赛项介绍 -->
-        <div class="home-introduce">
-            <div class="home-introduce__body bg-[#fff]">
+        <div class="home-introduce bg-[#fff]">
+            <div class="home-introduce__body pb-100px bg-[#fff]">
                 <div class="row">
                     <div class="flex items-center justify-center">
                         <img class="w-50px" src="@/assets/images/home/4.png" />
@@ -174,12 +174,12 @@ const { data: introduceData } = await useAsyncData('introduceData', () =>
                     </el-row>
                 </div>
             </div>
-            <img class="w-100%" src="@/assets/images/home/bg_color3.jpg" />
+            <img class="w-100%" src="@/assets/images/home/head_bg_03.png" />
         </div>
 
         <!-- 专家团队 -->
         <div class="home-specialist">
-            <div class="home-specialist__body bg-[#f4f6ff]">
+            <div class="home-specialist__body bg-[#E8F1FF]">
                 <div class="flex items-center justify-center">
                     <img class="w-50px" src="@/assets/images/home/4.png" />
                     <b class="text-[50px] ml-16px mr-16px">专家团队</b>
@@ -205,12 +205,12 @@ const { data: introduceData } = await useAsyncData('introduceData', () =>
                     </div>
                 </div>
             </div>
-            <img class="w-100%" src="@/assets/images/home/bg_color4.jpg " />
+            <img class="w-100%" src="@/assets/images/home/head_bg_04.png" />
         </div>
 
         <!-- 报名情况 -->
         <div class="home-apply">
-            <div class="home-apply__body bg-[#fff]">
+            <div class="home-apply__body bg-[#F4F6FF]">
                 <div class="row">
                     <div class="flex items-center justify-center">
                         <img class="w-50px" src="@/assets/images/home/4.png" />
